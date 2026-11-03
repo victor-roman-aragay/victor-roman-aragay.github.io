@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rclone personal backup client</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 44rem; margin: 0 auto; padding: 3rem 1.25rem 6rem;
+  }
+  h1 { font-size: 1.8rem; letter-spacing: -.02em; }
+  h2 { font-size: 1.2rem; margin-top: 2.5rem; }
+  code { font-size: .9em; padding: .15em .35em; border-radius: 4px; background: rgba(127,127,127,.15); }
+  .lede { font-size: 1.05rem; opacity: .85; }
+  hr { border: 0; border-top: 1px solid rgba(127,127,127,.3); margin: 3rem 0; }
+  footer { font-size: .85rem; opacity: .7; margin-top: 3rem; }
+</style>
+</head>
+<body>
+
+<h1>rclone personal backup client</h1>
+
+<p class="lede">A self-hosted, single-user backup tool. It copies files from one
+home server into the owner's own Google Drive, and does nothing else.</p>
+
+<h2 id="what-it-does">What it does</h2>
+
+<p>This is a private installation of <a href="https://rclone.org/">rclone</a>
+running on the owner's home server. It periodically uploads a set of personal
+documents to a folder in the owner's own Google Drive account, so that a copy
+exists off-site. There is no server-side component, no account system, and no
+other user: the application exists for one person, the account owner.</p>
+
+<p>The OAuth client described here is registered by that same individual. It is
+not offered to the public, not distributed, and does not accept sign-ups.</p>
+
+<hr>
+
+<h2 id="privacy">Privacy policy</h2>
+
+<p><strong>What is accessed.</strong> The application requests the scope
+<code>https://www.googleapis.com/auth/drive.file</code>. That grants access only
+to files and folders the application itself creates; it cannot see, read, modify
+or delete any other file in the user's Drive, and it cannot see Gmail or Photos.</p>
+
+<p><strong>Where data is stored.</strong> Uploaded data is written to a private
+folder (<code>b4-backups</code>) in the account owner's own Google Drive. Data is
+encrypted on the home server before it is uploaded, using a key the owner holds
+and Google does not. Google therefore stores ciphertext it cannot interpret.</p>
+
+<p><strong>What is collected.</strong> Nothing. There is no analytics, no
+telemetry, no crash reporting, no advertising, and no tracking of any kind. The
+application does not create profiles and does not use the data for any purpose
+other than making the backup.</p>
+
+<p><strong>What is shared.</strong> Nothing. No data is transferred to any third
+party. No one other than the account owner has access to the files, and the
+folder is not shared.</p>
+
+<p><strong>Retention.</strong> Snapshots are kept on a rolling schedule (14
+daily, 8 weekly, 6 monthly) and older ones are pruned automatically. The owner
+may delete the <code>b4-backups</code> folder at any time, which removes
+everything the application has ever stored.</p>
+
+<p><strong>Revoking access.</strong> Access can be revoked at any time at
+<a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>,
+or by deleting the OAuth client in the Google Cloud project. Revocation does not
+delete already-uploaded files; delete the folder for that.</p>
+
+<p><strong>Contact.</strong> <a href="mailto:rromanss23@gmail.com">rromanss23@gmail.com</a>.</p>
+
+<hr>
+
+<h2 id="terms">Terms of service</h2>
+
+<p>This application is provided for the personal use of its owner, as-is and
+without warranty of any kind, express or implied, including fitness for a
+particular purpose. Backups may fail, be incomplete, or be unreadable; the owner
+is responsible for verifying restores.</p>
+
+<p>The application is not sold, licensed, or offered as a service to anyone else.
+It may be modified or discontinued at any time without notice. Nothing here
+creates an obligation to provide support, availability, or data retention.</p>
+
+<p>Use of Google Drive through this application is also subject to Google's own
+terms and policies.</p>
+
+<footer>
+  Last updated 3 November 2026 · <a href="https://rclone.org/">rclone</a> ·
+  <a href="mailto:rromanss23@gmail.com">contact</a>
+</footer>
+
+</body>
+</html>
